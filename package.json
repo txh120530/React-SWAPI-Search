@@ -1,4 +1,5 @@
 {
+  "homepage": "https://txh120530.github.io/react-swapi-search",
   "name": "filter",
   "version": "0.1.0",
   "private": true,
@@ -9,12 +10,15 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
     "fuse.js": "^6.4.6",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
