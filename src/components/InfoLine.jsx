@@ -2,25 +2,27 @@
 
 function InfoLine({name, value}) {
 
-  function titleCase(sentence) {
-    let sentence = string.toLowerCase().split(" ");
-    for (let i = 0; i < sentence.length; i++) {
-      sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
-    }
-    
-    return sentence.join(" ");
+  function titleCase(s) { 
+      return s
+          .replace(/([^A-Z])([A-Z])/g, '$1 $2') // split cameCase
+          .replace(/[_\-]+/g, ' ') // split snake_case and lisp-case
+          .toLowerCase()
+          .replace(/(^\w|\b\w)/g, function(m) { return m.toUpperCase(); }) // title case words
+          .replace(/\s+/g, ' ') // collapse repeated whitespace
+          .replace(/^\s+|\s+$/, ''); // remove leading/trailing whitespace
   }
 
-  // const isApi = (value) =>{
-  // 	if(value.includes('https') || Array.isArray(value)){
-  // 		return true;
-  // 	}
-  // 	return false;
-  // }
+  const isApi = (value) =>{
+  	if(value.includes('https') || Array.isArray(value)){
+  		return true;
+  	}
+  	return false;
+  }
 
   return (
     <>
-		<div key={name}><strong>{InfoLine(name)}:</strong> {value} </div>
+    {isApi(value) === false && <div key={name}><strong class="block text-xl text-blue-500">{titleCase(name)}:</strong> {value} </div>}
+		
     </>
   );
 }

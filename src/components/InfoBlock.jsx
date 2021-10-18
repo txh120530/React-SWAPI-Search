@@ -6,7 +6,7 @@ function InfoBlock({obj}) {
 
   return (
     <>
-    <div className="border my-3 rounded-md">
+    <div className="border my-3 rounded-md p-2">
           {
           	Object.entries(obj.item).map(([key,value]) => (
           		<div id={key}>
